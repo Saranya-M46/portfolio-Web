@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Saranya M — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-dark:#001F2D; /* dark background */
+  --card-dark:#00334D; /* slightly lighter for cards */
+  --text:#F8FAFC;
+  --muted:#A0AEC0;
+  --accent:#00FFFF; /* Aqua Cyan */
+  --radius:14px;
+  --shadow:0 6px 20px rgba(0,0,0,0.3);
+  --max-width:1100px;
+  font-family:"Inter",system-ui;
+}
+*{box-sizing:border-box;transition:all 0.3s ease;}
+body{
+  margin:0;
+  background:var(--bg-dark);
+  color:var(--text);
+  line-height:1.6;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:24px;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{opacity:0.9;transform:scale(1.05);}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(0,31,45,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:var(--max-width);margin:0 auto;padding:12px 24px;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);}
+.brand h1{margin:0;font-size:24px;font-weight:700;}
+nav ul{display:flex;list-style:none;margin:0;padding:0;gap:20px;}
+nav a{color:var(--muted);font-weight:600;}
+nav a:hover{color:var(--accent);transform:scale(1.1);}
+
+/* HERO */
+.hero{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:16px;
+  padding:60px 0;
+}
+h2{font-size:36px;margin-bottom:12px;}
+p.lead{color:var(--muted);font-size:16px;margin-bottom:16px;}
+.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn{
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  border:1px solid transparent;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  transition:all 0.25s ease;
+}
+.btn-primary{background:var(--accent);color:var(--bg-dark);box-shadow:0 0 12px var(--accent);}
+.btn-outline{border:1px solid var(--accent);color:var(--accent);background:transparent;}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 20px var(--accent);}
+.btn:active{transform:scale(0.95);}
+
+/* SECTIONS */
+section{padding:40px 0;border-top:1px solid rgba(255,255,255,0.06);}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.section-head h3{margin:0;font-size:26px;color:#fff;}
+.card{
+  background:var(--card-dark);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  transition:all 0.3s ease;
+}
+.card:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 0 20px rgba(0,255,255,0.4);
+}
+.grid{display:grid;gap:16px;}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+
+/* SKILLS */
+.skill{
+  padding:12px;
+  background:var(--card-dark); /* same as project cards */
+  border-radius:var(--radius);
+  margin-bottom:10px;
+  transition:all 0.3s ease;
+  text-align:center;
+  color:var(--text); /* same as other text */
+  font-weight:600;
+}
+.skill:hover{
+  background:rgba(30,144,255,0.4); /* light Aqua Cyan hover effect */
+  transform:scale(1.05);
+}
+
+
+
+/* PROJECTS */
+.project-card{
+  background:var(--card-dark);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:all 0.3s ease;
+}
+.project-card:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 0 25px rgba(0,255,255,0.4);
+}
+.project-card img{width:100%;height:160px;object-fit:cover;transition:all 0.4s ease;}
+.project-card:hover img{transform:scale(1.08);}
+.project-card .p-body{padding:12px;}
+.project-card strong{color:var(--accent);}
+.project-card p{color:var(--muted);margin:6px 0 0;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+.form input,.form textarea{width:100%;padding:10px;border-radius:8px;border:none;background:#00334D;color:var(--text);margin-bottom:8px;}
+.form textarea{resize:vertical;min-height:120px;}
+footer{padding:24px 0;text-align:center;color:var(--muted);font-size:14px;}
+@media(max-width:900px){
+  .nav ul{display:none;}
+}
+
+/* ANIMATIONS */
+.fade-in{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.slide-in {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.slide-in.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.project-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.project-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.getintouch {
+  text-align:center;
+  padding:60px 0 20px;
+}
+.getintouch h3 {
+  font-size:30px;
+  color:var(--accent);
+  margin:0;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#home"><h1>Saranya M</h1></a>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <h2>Hello, I'm <span style="color:var(--accent)">Saranya M</span></h2>
+    <p class="lead">
+      I’m a Computer Science and Engineering student skilled in Full-Stack Web Development, Java Programming, and UI/UX Design.  
+      I create elegant, responsive, and functional digital solutions.
+    </p>
+    <div class="actions">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="slide-in">
+    <div class="section-head"><h3>About Me</h3></div>
+    <div class="card">
+      <p>
+        Hello! I'm <strong>Saranya M</strong>, a passionate and detail-oriented Computer Science and Engineering student from 
+        <strong>Kathir College of Engineering, Coimbatore</strong> (2022–2026). I specialize in <strong>Full Stack Web Development</strong>, 
+        <strong>Java Programming</strong>, and <strong>UI/UX Design</strong>.  
+        <br><br>
+        I love transforming ideas into creative, efficient, and user-friendly digital experiences. 
+        My approach blends technical logic with design thinking, allowing me to craft solutions that are 
+        both functional and visually engaging.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head"><h3>Skills</h3></div>
+    <div class="grid cols-2">
+      <div class="skill"><strong>Web Development:</strong> HTML, CSS, JavaScript</div>
+      <div class="skill"><strong>Programming:</strong> Java, SQL</div>
+      <div class="skill"><strong>Design Tools:</strong> Figma, Canva</div>
+      <div class="skill"><strong>Other:</strong> MS Excel</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head"><h3>Projects</h3></div>
+    <div class="grid cols-2">
+      <div class="project-card project-animate">
+        <div class="p-body">
+          <strong>Furnkart (UI/UX Design)</strong>
+          <p>E-commerce furniture prototype with responsive design & intuitive navigation enhancing user experience.</p>
+        </div>
+      </div>
+      <div class="project-card project-animate">
+        <div class="p-body">
+          <strong>Travel Agent Application</strong>
+          <p>Developed with Figma, HTML, CSS & JavaScript for smooth booking experience and responsive interface.</p>
+        </div>
+      </div>
+      <div class="project-card project-animate">
+        <div class="p-body">
+          <strong>ATM Simulation (Java)</strong>
+          <p>Console application for banking features like balance check, deposit, and withdrawal.</p>
+        </div>
+      </div>
+      <div class="project-card project-animate">
+        <div class="p-body">
+          <strong>AI Powered Game Bot</strong>
+          <p>Deep Reinforcement Learning agent built with Unity MLAgents for autonomous gameplay.</p>
+        </div>
+      </div>
+      <div class="project-card project-animate">
+        <div class="p-body">
+          <strong>Online Quiz Platform (Java)</strong>
+          <p>Interactive web-based quiz system with secure authentication, quiz management, and result tracking. Built using Java and responsive UI design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="fade-in">
+    <div class="section-head"><h3>Experience</h3></div>
+    <div class="grid cols-2">
+      <div class="card">
+        <p><strong>Java Intern – Navodita Infotech</strong> (Jun 2025 – Jul 2025)</p>
+        <ul>
+          <li>Developed an Online Quiz platform using Java.</li>
+          <li>Designed secure authentication, quiz management, and result modules.</li>
+          <li>Participated in code reviews, debugging, and software optimization.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p><strong>Full Stack Web Development Intern – Altruisty</strong> (Nov 2024 – Jan 2025)</p>
+        <ul>
+          <li>Worked on UI/UX enhancements, responsive layouts, and landing pages.</li>
+          <li>Built a responsive café website using HTML, CSS, and JavaScript.</li>
+          <li>Gained experience with project workflows and web hosting.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="fade-in">
+    <div class="section-head"><h3>Certifications</h3></div>
+    <div class="grid cols-2">
+      <div class="card"><p>Infosys Certified Java Developer</p></div>
+      <div class="card"><p>Full Stack Web Development – Altruisty</p></div>
+      <div class="card"><p>Java Programming with Data Structures and Algorithms – Smart Yugam</p></div>
+      <div class="card"><p>Java Internship Certificate – Navodita Infotech</p></div>
+    </div>
+  </section>
+
+  <!-- GET IN TOUCH -->
+  <section class="getintouch fade-in">
+    <h3>Get in Touch</h3>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-head"><h3>Contact</h3></div>
+    <div class="contact-grid">
+      <div class="card form">
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+          <div id="formMsg" style="margin-top:10px;font-size:14px;color:var(--muted);"></div>
+        </form>
+      </div>
+      <div class="card">
+        <p><strong>Email:</strong> <a href="mailto:saranyasaranya61279@gmail.com">saranyasaranya61279@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+919025869631">+91 9025869631</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/saranya-m-b412012a1" target="_blank">linkedin.com/in/saranya-m-b412012a1</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Saranya M — Built with HTML, CSS & JavaScript
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("BCVXc-qor-5wx7TFc");
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const out = document.getElementById('formMsg');
+
+    if(!name || !email || !message){
+      out.textContent = "Please fill all fields.";
+      return;
+    }
+
+    emailjs.send("service_3ic94m1", "template_sde9svm", {
+      from_name: name,
+      from_email: email,
+      message: message
+    })
+    .then(function(){
+      out.textContent = "Message sent successfully!";
+      document.getElementById('contactForm').reset();
+      setTimeout(()=> out.textContent = '', 4000);
+    }, function(){
+      out.textContent = "Failed to send message. Try again.";
+    });
+  });
+
+  // Animations
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -40px 0px" };
+  const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+  faders.forEach(fader => appearOnScroll.observe(fader));
+
+  const sliders = document.querySelectorAll('.slide-in');
+  const slideObserver = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
+  sliders.forEach(slider => slideObserver.observe(slider));
+
+  const projects = document.querySelectorAll('.project-animate');
+  const projectObserver = new IntersectionObserver((entries, observer)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.2, rootMargin: "0px 0px -20px 0px" });
+  projects.forEach((proj, index)=>{
+    proj.style.transitionDelay = `${index * 0.2}s`;
+    projectObserver.observe(proj);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
